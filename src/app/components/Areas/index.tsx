@@ -19,6 +19,7 @@ export default function Areas() {
           alt="Map"
           fill
           className="object-cover"
+          priority
         />
         {areas.map((area) => (
           <Nav key={area.id} area={area} ref={containerRef} />

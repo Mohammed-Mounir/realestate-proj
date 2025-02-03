@@ -25,6 +25,7 @@ export default async function Area({
           alt={area.name}
           fill
           className="object-cover"
+          priority
         />
         {area.projects.map((project) => (
           <Nav key={project.id} project={project} />

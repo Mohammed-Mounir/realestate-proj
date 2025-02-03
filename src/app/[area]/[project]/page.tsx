@@ -32,6 +32,7 @@ export default async function Project({
           alt={project.name}
           fill
           className="object-cover"
+          priority
         />
 
         {project.buildings.map((building) => (
