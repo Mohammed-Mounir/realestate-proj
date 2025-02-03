@@ -4,7 +4,11 @@ import { areas } from '@/data/real-estate-data';
 import Header from '@/app/components/Header';
 import Nav from './nav';
 
-export default async function Area({ params }: { params: { area: string } }) {
+export default async function Area({
+  params,
+}: {
+  params: Promise<{ area: string }>;
+}) {
   const { area: areaName } = await params;
   const area = areas.find((a) => a.slug === areaName);
 

@@ -8,7 +8,7 @@ import Nav from './nav';
 export default async function Project({
   params,
 }: {
-  params: { area: string; project: string };
+  params: Promise<{ area: string; project: string }>;
 }) {
   const { area: areaName, project: projectName } = await params;
   const area: IArea | undefined = areas.find((a: IArea) => a.slug === areaName);
