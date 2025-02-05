@@ -1,11 +1,14 @@
 export interface IBuilding {
   id: number;
   name: string;
-  position: {
+  slug: string;
+  mapPosition: {
     top: string;
     left: string;
   };
+  logo: string;
   background: string;
+  [key: string]: unknown;
 }
 
 export interface IProject {
@@ -19,6 +22,7 @@ export interface IProject {
   logo: string;
   background: string;
   buildings: IBuilding[];
+  [key: string]: unknown;
 }
 
 export interface IArea {
@@ -32,4 +36,17 @@ export interface IArea {
   background: string;
   logo: string;
   projects: IProject[];
+  [key: string]: unknown;
+}
+
+export interface ILocation {
+  id: number;
+  name: string;
+  slug: string;
+  mapPosition: {
+    top: string;
+    left: string;
+  };
+  logo: string;
+  [key: string]: unknown;
 }

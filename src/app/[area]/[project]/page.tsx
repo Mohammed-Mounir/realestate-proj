@@ -1,9 +1,7 @@
-import Image from 'next/image';
-
 import { areas } from '@/data/real-estate-data';
 import Header from '@/app/components/Header';
-import { IArea, IProject } from '@/types';
-import Nav from './nav';
+import type { IArea, IProject } from '@/types';
+import Marker from '@/app/components/Marker';
 
 export default async function Project({
   params,
@@ -26,19 +24,18 @@ export default async function Project({
   return (
     <>
       <Header breadcrumbs={breadcrumbs} />
-      <div className="relative w-full h-screen">
-        <Image
-          src={project.background}
-          alt={project.name}
-          fill
-          className="object-cover"
-          priority
-        />
-
+      <svg
+        viewBox="0 0 2048 2048"
+        width="100vw"
+        height="100vh"
+        preserveAspectRatio="xMidYMid slice"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <image href={project.background} width="2048" height="2048" />
         {project.buildings.map((building) => (
-          <Nav key={building.name} building={building} />
+          <Marker key={project.id} location={building} />
         ))}
-      </div>
+      </svg>
     </>
   );
 }
