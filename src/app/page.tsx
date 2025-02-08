@@ -12,7 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title: 'Real Estate Listings | Find Your Dream Home',
       description:
         'Explore our wide range of real estate listings across multiple cities. Find your perfect home or investment property today.',
-      images: ['/images/logo.png'],
+      images: ['/images/logo.webp'],
     },
   };
 }
@@ -30,7 +30,7 @@ export default async function Home() {
         preserveAspectRatio="xMidYMid slice"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <image href="/images/main.jpg" width="2048" height="2048" />
+        <image href="/images/main.webp" width="2048" height="2048" />
         {cities.map((city) => (
           <Marker key={city.id} location={city} />
         ))}

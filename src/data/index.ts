@@ -8,8 +8,8 @@ export const cities: ICity[] = [
     projects: ['the-lark'],
     mapPosition: { top: '1000', left: '900' },
     images: {
-      background: '/images/cities/new-cairo/bg.jpg',
-      logo: '/images/cities/new-cairo/logo.png',
+      background: '/images/cities/new-cairo/bg.webp',
+      logo: '/images/cities/new-cairo/logo.webp',
     },
   },
 ];
@@ -23,8 +23,8 @@ export const projects: IProject[] = [
     buildings: ['building-a'],
     mapPosition: { top: '1000', left: '900' },
     images: {
-      background: '/images/projects/the-lark/bg.jpg',
-      logo: '/images/cities/new-cairo/logo.png',
+      background: '/images/projects/the-lark/bg.webp',
+      logo: '/images/cities/new-cairo/logo.webp',
     },
   },
 ];

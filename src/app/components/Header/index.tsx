@@ -14,7 +14,7 @@ export default function Header({
           <div className="flex items-center space-x-2 h-14 px-4">
             <Link href="/" className="text-gray-500 hover:text-gray-700">
               <Image
-                src="/images/logo.png"
+                src="/images/logo.webp"
                 alt="Logo"
                 height={0}
                 width={150}
