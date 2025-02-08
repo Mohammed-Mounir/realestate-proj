@@ -3,6 +3,7 @@ import Marker from '../components/Marker';
 import { notFound } from 'next/navigation';
 import { getCities, getCity, getCityProjects } from '@/lib/api';
 import type { Metadata } from 'next';
+import Image from 'next/image';
 
 export async function generateStaticParams() {
   const cities = await getCities();
@@ -48,6 +49,13 @@ export default async function City({ params }: CityParams) {
   return (
     <>
       <Header breadcrumbs={breadcrumbs} />
+      <Image
+        src={city.images.background!}
+        alt={city.name}
+        layout="fill"
+        priority
+        className="fixed -z-10 object-cover"
+      />
       <svg
         viewBox="0 0 2048 2048"
         width="100vw"
@@ -55,7 +63,6 @@ export default async function City({ params }: CityParams) {
         preserveAspectRatio="xMidYMid slice"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <image href={city.images.background} width="2048" height="2048" />
         {cityProjects.map((project) => (
           <Marker key={project.id} location={project} />
         ))}

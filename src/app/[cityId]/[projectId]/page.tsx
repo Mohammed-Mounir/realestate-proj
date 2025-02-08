@@ -8,6 +8,7 @@ import Header from '@/app/components/Header';
 import Marker from '@/app/components/Marker';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import Image from 'next/image';
 
 export async function generateStaticParams() {
   const projects = await getProjects();
@@ -67,6 +68,13 @@ export default async function Project({ params }: ProjectParams) {
   return (
     <>
       <Header breadcrumbs={breadcrumbs} />
+      <Image
+        src={project.images.background!}
+        alt={project.name}
+        layout="fill"
+        priority
+        className="fixed -z-10 object-cover"
+      />
       <svg
         viewBox="0 0 2048 2048"
         width="100vw"
@@ -74,7 +82,6 @@ export default async function Project({ params }: ProjectParams) {
         preserveAspectRatio="xMidYMid slice"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <image href={project.images.background} width="2048" height="2048" />
         {buildings.map((building) => (
           <Marker key={building.id} location={building} />
         ))}
