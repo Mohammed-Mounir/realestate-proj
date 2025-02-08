@@ -1,8 +1,25 @@
-import { areas } from '@/data/real-estate-data';
+import type { Metadata } from 'next';
 import Header from './components/Header';
 import Marker from './components/Marker';
+import { getCities } from '@/lib/api';
 
-export default function Home() {
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: 'Real Estate Listings | Find Your Dream Home',
+    description:
+      'Explore our wide range of real estate listings across multiple cities. Find your perfect home or investment property today.',
+    openGraph: {
+      title: 'Real Estate Listings | Find Your Dream Home',
+      description:
+        'Explore our wide range of real estate listings across multiple cities. Find your perfect home or investment property today.',
+      images: ['/images/logo.png'],
+    },
+  };
+}
+
+export default async function Home() {
+  const cities = await getCities();
+
   return (
     <main className="min-h-screen relative">
       <Header />
@@ -14,8 +31,8 @@ export default function Home() {
         xmlns="http://www.w3.org/2000/svg"
       >
         <image href="/images/main.jpg" width="2048" height="2048" />
-        {areas.map((area) => (
-          <Marker key={area.id} location={area} />
+        {cities.map((city) => (
+          <Marker key={city.id} location={city} />
         ))}
       </svg>
     </main>

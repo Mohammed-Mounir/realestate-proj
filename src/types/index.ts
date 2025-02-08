@@ -1,52 +1,55 @@
-export interface IBuilding {
-  id: number;
-  name: string;
-  slug: string;
-  mapPosition: {
-    top: string;
-    left: string;
-  };
-  logo: string;
-  background: string;
-  [key: string]: unknown;
+export interface MapPosition {
+  top: string;
+  left: string;
 }
 
-export interface IProject {
-  id: number;
+export interface BaseLocation {
+  id: string;
   name: string;
-  slug: string;
   mapPosition: {
     top: string;
     left: string;
   };
-  logo: string;
-  background: string;
-  buildings: IBuilding[];
-  [key: string]: unknown;
+  images: {
+    background?: string;
+    logo?: string;
+    gallery?: string[];
+  };
+  description?: string;
+  meta?: {
+    title?: string;
+    description?: string;
+  };
+  // [key: string]: unknown;
 }
 
-export interface IArea {
-  id: number;
-  name: string;
-  slug: string;
-  mapPosition: {
-    top: string;
-    left: string;
-  };
-  background: string;
-  logo: string;
-  projects: IProject[];
-  [key: string]: unknown;
+export interface ICity extends BaseLocation {
+  type: 'city';
+  projects?: string[];
 }
 
-export interface ILocation {
-  id: number;
-  name: string;
-  slug: string;
-  mapPosition: {
-    top: string;
-    left: string;
-  };
-  logo: string;
-  [key: string]: unknown;
+export interface IProject extends BaseLocation {
+  type: 'project';
+  cityId: string;
+  buildings?: string[];
+}
+
+export interface IBuilding extends BaseLocation {
+  type: 'building';
+  projectId: string;
+  units?: Unit[];
+  floors?: number;
+}
+
+export interface Unit {
+  id: string;
+  number: string;
+  type: string;
+  floor: number;
+  area: number;
+  bedrooms: number;
+  bathrooms: number;
+  price: number;
+  status: 'available' | 'sold' | 'reserved';
+  features?: string[];
 }
